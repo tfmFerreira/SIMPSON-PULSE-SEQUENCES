@@ -1,0 +1,86 @@
+# Evolution of 13C Magnetisation under a Heteronuclear Dipolar Hamiltonian 
+
+ 
+spinsys {
+    nuclei 1H 13C
+    channels 1H 13C
+    dipole 1 2  21000   0   0   0
+     shift     1 0.00p 0.00p 0.5   0   0   0
+     shift     2 0.00p 0.00p 0.5   0   0   0
+}
+par {
+    proton_frequency     400e6
+    crystal_file zcw28656
+    dipole_check         false
+    gamma_angles       1
+    spin_rate          0
+    variable lb        0
+    sw                 100000
+    verbose            1101
+    conjugate_fid      true
+    np                 256
+    start_operator      I2y
+    detect_operator     I2y
+ 
+}
+ 
+ 
+proc pulseq {} {
+        global par
+ 
+ 
+        set rf [expr 250000]
+        set t180 [expr 0.5e6/$rf]
+        set t90 [expr 0.25e6/$rf]
+        set d [expr 0.1e6]
+        set np0 [expr $par(np)/16] 
+
+reset
+     
+        for {set j 0} {$j < $np0} {incr j} {
+#        pulseid $t180 $rf x 0 x        
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]}
+        }
+
+
+proc main {} {
+    global par
+    set f [fsimpson]
+    fsave $f $par(name).fid
+    fsave $f $par(name)_TD.dat -xreim
+    fft $f
+    fsave $f $par(name).spe
+    fsave $f $par(name)_FT.dat -xreim
+}
+

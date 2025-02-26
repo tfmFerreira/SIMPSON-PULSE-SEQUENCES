@@ -1,0 +1,112 @@
+# CPMG for a C-H spin pair
+
+ 
+spinsys {
+    nuclei 13C 1H
+    channels 13C 1H
+    dipole 1 2  21000   0   0   0
+     shift     1 0.00p 0.00p 0.5   0   0   0
+     shift     2 0.00p 0.00p 0.5   0   0   0
+}
+par {
+    proton_frequency     400e6
+    crystal_file zcw28656
+    dipole_check         false
+    gamma_angles       1
+    spin_rate          0
+    variable lb        0
+    sw                 100000
+    verbose            1101
+    conjugate_fid      true
+    np                 512
+    start_operator      I1y
+    detect_operator     I1y
+ 
+}
+ 
+ 
+proc pulseq {} {
+        global par
+ 
+ 
+        set rf [expr 250000]
+        set t180 [expr 0.5e6/$rf]
+        set t90 [expr 0.25e6/$rf]
+        set np0 [expr $par(np)/32] 
+
+reset
+     
+        for {set j 0} {$j < $np0} {incr j} {
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        pulseid $t180 $rf y 0 x        
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]}
+        }
+
+proc main {} {
+    global par
+    set f [fsimpson]
+    fsave $f $par(name)_TD.dat -xreim
+}
+
