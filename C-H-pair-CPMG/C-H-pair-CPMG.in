@@ -30,7 +30,7 @@ proc pulseq {} {
         set rf [expr 250000]
         set t180 [expr 0.5e6/$rf]
         set t90 [expr 0.25e6/$rf]
-        set np0 [expr $par(np)/32] 
+        set np0 [expr $par(np)/64] 
 
 reset
      
@@ -67,7 +67,71 @@ reset
         delay [expr 1.0e6/$par(sw)]
         acq
         delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
         pulseid $t180 $rf y 0 x        
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
+        acq
+        delay [expr 1.0e6/$par(sw)]
         acq
         delay [expr 1.0e6/$par(sw)]
         acq
