@@ -1,13 +1,14 @@
 # CPMG for a C-H spin pair
+# Tiago M. Ferreira
 
- 
 spinsys {
     nuclei 13C 1H
     channels 13C 1H
     dipole 1 2  21000   0   0   0
-     shift     1 0.00p 0.00p 0.5   0   0   0
-     shift     2 0.00p 0.00p 0.5   0   0   0
+     shift     1 0.00p 0.00p 0   0   0   0
+     shift     2 0.00p 0.00p 0   0   0   0
 }
+
 par {
     proton_frequency     400e6
     crystal_file zcw28656
@@ -21,13 +22,10 @@ par {
     np                 512
     start_operator      I1y
     detect_operator     I1y
- 
 }
- 
  
 proc pulseq {} {
         global par
- 
  
         set rf [expr 250000]
         set t180 [expr 0.5e6/$rf]
